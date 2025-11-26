@@ -8,6 +8,12 @@
         <%= request.getAttribute("schools1") %>
     </p>
     <p>
+        <%= request.getAttribute("schools2") %>
+    </p>
+    <p>
+        <%= request.getAttribute("schools3") %>
+    </p>
+    <p>
         <%= request.getAttribute("students1") %>
     </p>
     <p>
@@ -15,6 +21,9 @@
     </p>
     <p>
         <%= request.getAttribute("students3") %>
+    </p>
+    <p>
+        <%= request.getAttribute("students4") %>
     </p>
 </body>
 </html>

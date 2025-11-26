@@ -45,4 +45,28 @@ public class SchoolRepository {
             em.close();
         }
     }
+
+    // innerJoin -> 학생이 있어야 조회
+    public List<School> innerJoin() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery(
+                    "SELECT sc FROM School sc JOIN sc.students s", School.class
+            ).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    // leftJoin -> 학생이 없는 것도 조회
+    public List<School> leftJoin() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery(
+                    "SELECT sc FROM School sc LEFT JOIN sc.students s", School.class
+            ).getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }

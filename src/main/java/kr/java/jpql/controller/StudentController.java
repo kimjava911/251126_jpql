@@ -33,7 +33,10 @@ public class StudentController {
                         studentRepository.findById(1))
                 );
         model.addAttribute("students3", studentRepository.findByWhere());
+        model.addAttribute("students4", studentRepository.findByDTO());
         model.addAttribute("schools1", schoolRepository.findAll());
+        model.addAttribute("schools2", schoolRepository.innerJoin());
+        model.addAttribute("schools3", schoolRepository.leftJoin());
         return "index";
     }
 

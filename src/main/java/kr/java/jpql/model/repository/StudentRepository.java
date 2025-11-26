@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import kr.java.jpql.model.entity.Student;
+import kr.java.jpql.model.entity.StudentDTO;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -91,6 +92,19 @@ public class StudentRepository {
             // .getResultList();
             return em.createQuery(
                     "select s from Student s", Student.class
+            ).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<StudentDTO> findByDTO() {
+        EntityManager em = emf.createEntityManager();
+        // record, class DTO -> service? -> JPQL.
+        try {
+            return em.createQuery(
+                    "select new kr.java.jpql.model.entity.StudentDTO(s.name)" +
+                            "from Student s", StudentDTO.class
             ).getResultList();
         } finally {
             em.close();
